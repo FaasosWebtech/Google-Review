@@ -1,16 +1,16 @@
-
-<!-- This is a comment act like a web developer and create an online review management system using html css and javascript. the clinet must have option to choose between 5 stars. if the client selects 4 or 5 stars the client must be redirected to google reviews page of the bussines and if the client selects 3 or less stars the client must be redirected to a separet webpage -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Review Management System</title>
+  <title>Rate Our Service</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
     <h1>Rate Our Service</h1>
+    <p>We value your feedback! Please rate your experience with us.</p>
     <div class="stars">
       <span class="star" data-value="1">&#9733;</span>
       <span class="star" data-value="2">&#9733;</span>
@@ -18,6 +18,7 @@
       <span class="star" data-value="4">&#9733;</span>
       <span class="star" data-value="5">&#9733;</span>
     </div>
+    <p id="feedback-message"></p>
   </div>
   <script src="script.js"></script>
 </body>
