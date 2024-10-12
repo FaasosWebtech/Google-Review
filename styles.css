@@ -6,52 +6,38 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif; /* Modern and elegant font */
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
+  background: linear-gradient(135deg, #e0c3fc, #8ec5fc); /* Soft gradient background from lavender to light blue */
   color: #333;
 }
 
-/* Container styling */
+/* Elegant container design */
 .container {
-  background: #f7f9fc;
+  background: #DAF7A6; /* White background for the container */
   border-radius: 15px;
   padding: 40px;
   text-align: center;
   max-width: 500px;
-  max-height: 1500px;
   width: 90%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
-
-.container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, #ff5f6d, #ffc371);
-  opacity: 0.2;
-  border-radius: 15px;
-  z-index: -1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  position: relative; /* For pseudo-elements */
 }
 
 h1 {
   font-size: 28px;
   font-weight: 700;
-  color: #2c3e50;
+  color: #2c3e50; /* Dark blue */
   margin-bottom: 20px;
 }
 
 p {
   font-size: 16px;
   font-weight: 300;
-  color: #7f8c8d;
+  color: #7f8c8d; /* Grey */
   margin-bottom: 30px;
 }
 
@@ -65,68 +51,91 @@ p {
 
 .star {
   font-size: 50px;
-  color: #d1d1d1;
+  color: #d1d1d1; /* Light grey for inactive stars */
   cursor: pointer;
   transition: color 0.3s ease, transform 0.3s ease, filter 0.3s ease;
 }
 
 .star:hover,
 .star.selected {
-  color: #ffcc00;
-  transform: scale(1.2);
-  filter: drop-shadow(0 0 10px #ffcc00);
+  color: #ffcc00; /* Bright yellow for selected stars */
+  transform: scale(1.2); /* Slightly increase size */
+  filter: drop-shadow(0 0 10px #ffcc00); /* Glow effect */
 }
 
 .star:hover ~ .star {
-  color: #d1d1d1;
+  color: #d1d1d1; /* Dim inactive stars */
 }
 
+/* Form styles */
+#feedback-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center; /* Aligns the items vertically centered */
+  margin: 10px 0; /* Space between each checkbox group */
+}
+
+.form-group input[type="checkbox"] {
+  margin-right: 10px; /* Space between checkbox and label */
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Elegant button design */
 button {
-  background-color: #8e44ad;
+  background-color: #8e44ad; /* Bright purple */
   color: #ffffff;
   border: none;
   padding: 12px 30px;
   font-size: 16px;
-  border-radius: 25px;
+  border-radius: 25px; /* Rounded corners */
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 15px rgba(142, 68, 173, 0.3);
+  box-shadow: 0 8px 15px rgba(142, 68, 173, 0.3); /* Soft shadow */
 }
 
 button:hover {
-  background-color: #732d91;
+  background-color: #732d91; /* Darker purple on hover */
   box-shadow: 0 12px 20px rgba(142, 68, 173, 0.4);
-  transform: translateY(-2px);
+  transform: translateY(-2px); /* Lift effect */
 }
 
-#feedback-form {
-  background: #f7f9fc;
-  border-radius: 15px;
-  padding: 40px;
-  text-align: center;
-  max-width: 500px;
-  width: 90%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+/* Feedback message */
+#feedback-message {
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px;
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
 }
 
-#style1{
-	text-align: left;
-}
-/* Swipe animation */
-@keyframes swipe {
+@keyframes fadeIn {
   from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(-100%);
     opacity: 0;
   }
-}
-
-.swipe-away {
-  animation: swipe 0.5s forwards;
+  to {
+    opacity: 1;
+  }
 }
 
 /* Mobile responsive design */
