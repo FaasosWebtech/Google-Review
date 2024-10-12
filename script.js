@@ -1,28 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
   const stars = document.querySelectorAll('.star');
+  const nextButton = document.querySelector('#next-button');
+  const form = document.querySelector('#feedback-form');
+  const container = document.querySelector('.container');
+  let selectedRating = 0;
+
+  // Star selection logic
   stars.forEach(star => {
-    star.addEventListener('click', handleStarClick);
+    star.addEventListener('click', (event) => {
+      selectedRating = event.target.getAttribute('data-value');
+      highlightStars(selectedRating);
+    });
   });
-});
 
-function handleStarClick(event) {
-  const value = event.target.getAttribute('data-value');
-  highlightStars(value);
-
-  if (value >= 4) {
-    window.location.href = 'https://www.google.com/search?rlz=1C1CHBD_en-GBAU947AU948&sca_esv=4aa4cadb6d3a9fe9&cs=0&output=search&kgmid=/g/1tm12rqz&q=McDonald%27s+Stanmore&kgs=b2f548c8c843b134&shndl=30&shem=lsp&source=sh/x/kp/local/m1/1#lrd=0x6b12b024f9fe560d:0xaea8678108abbe28,3,,,,'; // Replace with your Google reviews URL
-  } else {
-    window.location.href = 'https://forms.gle/2yaKsdfUkzUBUGn39';
-  }
-}
-
-function highlightStars(rating) {
-  const stars = document.querySelectorAll('.star');
-  stars.forEach(star => {
-    if (star.getAttribute('data-value') <= rating) {
-      star.classList.add('selected');
+  // Show form if rating is less than 4
+  nextButton.addEventListener('click', () => {
+    if (selectedRating < 4) {
+      container.classList.add('swipe-away');
+      setTimeout(() => {
+        container.style.display = 'none';
+        form.style.display = 'block';
+      }, 500);
     } else {
-      star.classList.remove('selected');
+      alert('Thank you for your high rating! You will be redirected to the Google Reviews page.');
+      window.location.href = 'https://www.google.com/search'; // Replace with actual URL
     }
   });
-}
+
+  // Highlight stars function
+  function highlightStars(rating) {
+    stars.forEach(star => {
+      if (star.getAttribute('data-value') <= rating) {
+        star.classList.add('selected');
+      } else {
+        star.classList.remove('selected');
+      }
+    });
+  }
+});

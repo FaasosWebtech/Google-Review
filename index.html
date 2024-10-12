@@ -18,8 +18,69 @@
       <span class="star" data-value="4">&#9733;</span>
       <span class="star" data-value="5">&#9733;</span>
     </div>
+    <button id="next-button">Next</button>
     <p id="feedback-message"></p>
   </div>
+
+  <!-- Feedback form (hidden initially) -->
+  <div id="feedback-form" style="display: none;">
+    <h2>Customer Feedback</h2>
+    <p>We would love to hear your thoughts or feedback on how we can improve your experience!</p>
+
+    <label for="serviceQuality">1. Service Quality:</label>
+    <div class="stars">
+      <span class="star" data-value="1">&#9733;</span>
+      <span class="star" data-value="2">&#9733;</span>
+      <span class="star" data-value="3">&#9733;</span>
+      <span class="star" data-value="4">&#9733;</span>
+      <span class="star" data-value="5">&#9733;</span>
+    </div>
+
+    <label for="communication">2. Communication:</label>
+    <div class="stars">
+      <span class="star" data-value="1">&#9733;</span>
+      <span class="star" data-value="2">&#9733;</span>
+      <span class="star" data-value="3">&#9733;</span>
+      <span class="star" data-value="4">&#9733;</span>
+      <span class="star" data-value="5">&#9733;</span>
+    </div>
+   <div id="style1">
+    <label for="improvements">3. Improvements:</label><br>
+      <input type="checkbox" id="faster-response" name="improvements" value="Faster Response Time">
+      <label for="faster-response">Faster Response Time</label><br>
+      <input type="checkbox" id="better-communication" name="improvements" value="Better Communication">
+      <label for="better-communication">Better Communication</label><br>
+      <input type="checkbox" id="more-service" name="improvements" value="More Service Options">
+      <label for="more-service">More Service Options</label><br>
+      <input type="checkbox" id="pricing" name="improvements" value="Pricing">
+      <label for="pricing">Pricing</label><br>
+      <input type="checkbox" id="other" name="improvements" value="Other">
+      <label for="other">Other</label><br>
+    </div>
+	
+	
+	<br>
+	
+   <div id="style1">
+    <label for="feedback">4. Please provide your feedback:</label>
+    <textarea id="feedback" name="feedback" rows="8" cols="50"></textarea><br>
+   </div>
+	
+	
+	<br>
+	
+	
+   <div id="style1">
+    <label for="email">5. Email:</label><br>
+    <input type="email" id="email" name="email" rows="18" required><br>
+   </div>
+   
+   <br>
+   <br>
+   
+    <button type="submit">Submit</button>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

@@ -6,25 +6,26 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif; /* Modern and elegant font */
+  font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #e0c3fc, #8ec5fc); /* Soft gradient background from lavender to light blue */
+  background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
   color: #333;
 }
 
-/* Elegant container design */
+/* Container styling */
 .container {
-  background: #DAF7A6;/* White background for the container */
+  background: #f7f9fc;
   border-radius: 15px;
   padding: 40px;
   text-align: center;
   max-width: 500px;
+  max-height: 1500px;
   width: 90%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  position: relative; /* For pseudo-elements */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 .container::before {
@@ -34,23 +35,23 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, #ff5f6d, #ffc371); /* Colorful gradient overlay for the container */
+  background: linear-gradient(45deg, #ff5f6d, #ffc371);
   opacity: 0.2;
   border-radius: 15px;
-  z-index: -1; /* Place it behind the content */
+  z-index: -1;
 }
 
 h1 {
   font-size: 28px;
   font-weight: 700;
-  color: #2c3e50; /* Dark blue */
+  color: #2c3e50;
   margin-bottom: 20px;
 }
 
 p {
   font-size: 16px;
   font-weight: 300;
-  color: #7f8c8d; /* Grey */
+  color: #7f8c8d;
   margin-bottom: 30px;
 }
 
@@ -64,58 +65,68 @@ p {
 
 .star {
   font-size: 50px;
-  color: #d1d1d1; /* Light grey for inactive stars */
+  color: #d1d1d1;
   cursor: pointer;
   transition: color 0.3s ease, transform 0.3s ease, filter 0.3s ease;
 }
 
 .star:hover,
 .star.selected {
-  color: #ffcc00; /* Bright yellow for selected stars */
-  transform: scale(1.2); /* Slightly increase size */
-  filter: drop-shadow(0 0 10px #ffcc00); /* Glow effect */
+  color: #ffcc00;
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px #ffcc00);
 }
 
 .star:hover ~ .star {
-  color: #d1d1d1; /* Dim inactive stars */
+  color: #d1d1d1;
 }
 
-/* Elegant button design */
 button {
-  background-color: #8e44ad; /* Bright purple */
+  background-color: #8e44ad;
   color: #ffffff;
   border: none;
   padding: 12px 30px;
   font-size: 16px;
-  border-radius: 25px; /* Rounded corners */
+  border-radius: 25px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 15px rgba(142, 68, 173, 0.3); /* Soft shadow */
+  box-shadow: 0 8px 15px rgba(142, 68, 173, 0.3);
 }
 
 button:hover {
-  background-color: #732d91; /* Darker purple on hover */
+  background-color: #732d91;
   box-shadow: 0 12px 20px rgba(142, 68, 173, 0.4);
-  transform: translateY(-2px); /* Lift effect */
+  transform: translateY(-2px);
 }
 
-/* Feedback message */
-#feedback-message {
-  font-size: 16px;
-  color: #333;
-  margin-top: 10px;
-  opacity: 0;
-  animation: fadeIn 0.5s ease forwards;
+#feedback-form {
+  background: #f7f9fc;
+  border-radius: 15px;
+  padding: 40px;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes fadeIn {
+#style1{
+	text-align: left;
+}
+/* Swipe animation */
+@keyframes swipe {
   from {
-    opacity: 0;
-  }
-  to {
+    transform: translateX(0);
     opacity: 1;
   }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.swipe-away {
+  animation: swipe 0.5s forwards;
 }
 
 /* Mobile responsive design */
