@@ -1,30 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
   const stars = document.querySelectorAll('.star');
+  const nextButton = document.getElementById('next-btn');
+  const ratingContainer = document.getElementById('rating-container');
+  const feedbackForm = document.getElementById('feedback-form');
+  let selectedRating = 0;
+
   stars.forEach(star => {
-    star.addEventListener('click', handleStarClick);
+    star.addEventListener('click', function() {
+      selectedRating = this.getAttribute('data-value');
+      highlightStars(selectedRating);
+      nextButton.style.display = 'block'; // Show the Next button after selecting a rating
+    });
   });
-});
 
-function handleStarClick(event) {
-  const value = event.target.getAttribute('data-value');
-  highlightStars(value);
-
-  if (value >= 4) {
-    window.location.href = 'https://www.google.com/search?q=your+business+name'; // Replace with your Google reviews URL
-  } else {
-    document.querySelector('.container').style.display = 'none'; // Hide the rating section
-    document.getElementById('feedback-form').style.display = 'block'; // Show the feedback form
-  }
-
-  document.getElementById('feedback-message').textContent = `Thank you for your rating of ${value} stars!`;
-  document.getElementById('feedback-message').style.opacity = 1; // Make message visible
-}
-
-function highlightStars(value) {
-  stars.forEach(star => {
-    star.classList.remove('selected');
-    if (star.getAttribute('data-value') <= value) {
-      star.classList.add('selected');
+  nextButton.addEventListener('click', function() {
+    if (selectedRating >= 4) {
+      // Redirect to Google reviews for 4 stars or more
+      window.location.href = 'https://www.google.com/search?q=your+business+name'; // Replace with actual URL
+    } else {
+      // Hide rating container and show feedback form
+      ratingContainer.style.display = 'none';
+      feedbackForm.style.display = 'block';
     }
   });
-}
+
+  function highlightStars(value) {
+    stars.forEach(star => {
+      star.classList.remove('selected');
+      if (star.getAttribute('data-value') <= value) {
+        star.classList.add('selected');
+      }
+    });
+  }
+});
