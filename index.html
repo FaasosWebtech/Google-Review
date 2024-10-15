@@ -5,9 +5,144 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rate Our Service</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Global reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
+      color: #333;
+    }
+
+    /* Elegant container design */
+    .container {
+      background: #DAF7A6;
+      border-radius: 15px;
+      padding: 40px;
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow-y: auto;
+      max-height: 90vh; /* Prevent form overflow */
+    }
+
+    h1, h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 300;
+      color: #7f8c8d;
+      margin-bottom: 30px;
+    }
+
+    /* Star rating system */
+    .stars {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .star {
+      font-size: 50px;
+      color: #d1d1d1;
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .star:hover,
+    .star.selected {
+      color: #ffcc00;
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 10px #ffcc00);
+    }
+
+    /* Next button */
+    button {
+      background-color: #8e44ad;
+      color: #ffffff;
+      border: none;
+      padding: 12px 30px;
+      font-size: 16px;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 15px rgba(142, 68, 173, 0.3);
+      margin-top: 20px;
+    }
+	
+	  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+    button:hover {
+      background-color: #732d91;
+      box-shadow: 0 12px 20px rgba(142, 68, 173, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Form inputs */
+    #feedback-form textarea,
+    #feedback-form input {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+
+    #feedback-form textarea {
+      height: 80px;
+    }
+
+    /* Mobile responsive design */
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+      }
+
+      .star {
+        font-size: 40px;
+      }
+
+      h1, h2 {
+        font-size: 24px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- Rating section -->
   <div class="container" id="rating-container">
     <h1>Rate Our Service</h1>
     <p>We value your feedback! Please rate your experience with us.</p>
@@ -24,13 +159,14 @@
     <button id="next-btn" style="display: none;">Next</button>
   </div>
 
-  <!-- Feedback form (hidden initially) -->
+  <!-- Feedback form -->
   <div class="container" id="feedback-form" style="display: none;">
     <h2>Customer Feedback</h2>
     <p>We would love to hear your thoughts or feedback on how we can improve your experience!</p>
 
-    <label>1. Service Quality</label>
-    <div class="stars">
+    <!-- Service Quality Rating -->
+    <label>Service Quality Rating</label>
+    <div class="service-stars stars">
       <span class="star" data-value="1">&#9733;</span>
       <span class="star" data-value="2">&#9733;</span>
       <span class="star" data-value="3">&#9733;</span>
@@ -38,8 +174,9 @@
       <span class="star" data-value="5">&#9733;</span>
     </div>
 
-    <label>2. Communication</label>
-    <div class="stars">
+    <!-- Communication Rating -->
+    <label>Communication Rating</label>
+    <div class="communication-stars stars">
       <span class="star" data-value="1">&#9733;</span>
       <span class="star" data-value="2">&#9733;</span>
       <span class="star" data-value="3">&#9733;</span>
@@ -47,9 +184,9 @@
       <span class="star" data-value="5">&#9733;</span>
     </div>
 
-    
-    <label>3. Response Time </label>
-    <div class="stars">
+    <!-- Response Time Rating -->
+    <label>Response Time Rating</label>
+    <div class="responsetime-stars stars">
       <span class="star" data-value="1">&#9733;</span>
       <span class="star" data-value="2">&#9733;</span>
       <span class="star" data-value="3">&#9733;</span>
@@ -57,15 +194,125 @@
       <span class="star" data-value="5">&#9733;</span>
     </div>
 
-    <label for="feedback">4. What could we do better in your opinion?</label>
+    <!-- Feedback Text -->
+    <label for="feedback">What could we do better?</label>
     <textarea id="feedback" rows="3" required></textarea>
 
-    <label for="email" text-align="left">5. Email *</label>
+    <!-- Email -->
+    <label for="email">Email *</label>
     <input type="email" id="email" required>
+    <p id="email-error" style="color: red; display: none;">Please enter a valid email address.</p>
 
-    <button type="submit" id="submit-btn" align="center">Submit</button>
+
+    <button type="submit" id="submit-btn">Submit</button>
   </div>
 
-  <script src="script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const stars = document.querySelectorAll('.stars .star');
+    const nextButton = document.getElementById('next-btn');
+    const submitButton = document.getElementById('submit-btn');
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('email-error');
+    const feedbackForm = document.getElementById('feedback-form');
+    const thankYouMessage = document.createElement('h2');
+    thankYouMessage.innerText = 'Thank you for your review!';
+    thankYouMessage.style.color = '#2c3e50';
+    thankYouMessage.style.display = 'none'; // Initially hidden
+    feedbackForm.parentElement.appendChild(thankYouMessage);
+
+    let selectedRating = 0;
+
+    // Function to validate email format
+    function validateEmail(email) {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailPattern.test(email);
+    }
+
+    // Handle star rating selection
+    stars.forEach(star => {
+      star.addEventListener('click', (event) => {
+        const ratingContainer = event.target.parentElement;
+        const ratingType = ratingContainer.className.split(' ')[0];
+        const ratingValue = parseInt(event.target.getAttribute('data-value'));
+
+        // Update selected star ratings
+        if (ratingType === 'stars') {
+          selectedRating = ratingValue;
+          document.getElementById('feedback-message').innerText = `You rated us ${ratingValue} stars!`;
+          nextButton.style.display = 'block';  // Show the Next button when rating is selected
+        }
+
+        // Mark selected stars for service, communication, and response time
+        ratingContainer.querySelectorAll('.star').forEach((star, index) => {
+          star.classList.toggle('selected', index < ratingValue);
+        });
+      });
+    });
+
+    // Handle Next button click
+    nextButton.addEventListener('click', () => {
+      document.getElementById('rating-container').style.display = 'none';
+      feedbackForm.style.display = 'block';
+    });
+
+    // Handle Submit button click
+    submitButton.addEventListener('click', async (event) => {
+      event.preventDefault();
+
+      const serviceRating = Array.from(document.querySelector('.service-stars').children).filter(star => star.classList.contains('selected')).length;
+      const communicationRating = Array.from(document.querySelector('.communication-stars').children).filter(star => star.classList.contains('selected')).length;
+      const responseTimeRating = Array.from(document.querySelector('.responsetime-stars').children).filter(star => star.classList.contains('selected')).length;
+      const feedback = document.getElementById('feedback').value;
+      const email = emailInput.value;
+
+      // Validate email before submission
+      if (!validateEmail(email)) {
+        emailError.style.display = 'block';  // Show error message if email is invalid
+        return;
+      } else {
+        emailError.style.display = 'none';  // Hide error message if email is valid
+      }
+
+      // Get current date and time
+      const dateTime = new Date().toLocaleString();
+
+      // Prepare data to send
+      const feedbackData = {
+        mainRating: selectedRating,
+        serviceRating,
+        communicationRating,
+        responseTimeRating,
+        feedback,
+        email,
+        dateTime  // Include date and time
+      };
+
+      const apiUrl = 'https://sheetdb.io/api/v1/d7g2vqad93nos?sheet=google review';
+      try {
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(feedbackData),
+        });
+        const result = await response.json();
+        if (result.created) {
+          // After successful submission, hide the feedback form and show the thank you message
+          feedbackForm.style.display = 'none';
+          thankYouMessage.style.display = 'block';  // Show the thank you message
+        } else {
+          alert('An error occurred. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error submitting feedback:', error);
+        alert('There was an issue submitting your feedback.');
+      }
+    });
+  });
+</script>
+
+
+
+
 </body>
 </html>
